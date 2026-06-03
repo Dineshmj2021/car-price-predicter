@@ -71,3 +71,45 @@ if st.button("Predict Price"):
     st.success(
         f"Estimated Car Price: ₹ {prediction[0]:.2f} Lakhs"
     )
+    import pandas as pd
+import matplotlib.pyplot as plt
+
+st.header("📊 Data Analysis & Visualization")
+
+df = pd.read_csv("car_data.csv")
+
+# Dataset Preview
+st.subheader("Dataset Preview")
+st.dataframe(df.head())
+
+# Statistics
+st.subheader("Statistical Summary")
+st.write(df.describe())
+
+# Scatter Plot
+st.subheader("Present Price vs Selling Price")
+
+fig1, ax1 = plt.subplots()
+ax1.scatter(df["Present_Price"], df["Selling_Price"])
+ax1.set_xlabel("Present Price")
+ax1.set_ylabel("Selling Price")
+ax1.set_title("Present Price vs Selling Price")
+
+st.pyplot(fig1)
+
+# Histogram
+st.subheader("Selling Price Distribution")
+
+fig2, ax2 = plt.subplots()
+ax2.hist(df["Selling_Price"], bins=10)
+ax2.set_xlabel("Selling Price")
+ax2.set_ylabel("Frequency")
+ax2.set_title("Selling Price Distribution")
+
+st.pyplot(fig2)
+
+# Correlation Matrix
+st.subheader("Correlation Matrix")
+
+numeric_df = df.select_dtypes(include=["number"])
+st.dataframe(numeric_df.corr())
