@@ -71,7 +71,7 @@ if st.button("Predict Price"):
     st.success(
         f"Estimated Car Price: ₹ {prediction[0]:.2f} Lakhs"
     )
-    import pandas as pd
+import pandas as pd
 import matplotlib.pyplot as plt
 
 st.header("📊 Data Analysis & Visualization")
